@@ -12,7 +12,7 @@ import pytz
 import streamlit as st
 import streamlit_authenticator as stauth
 
-# 從 Secrets 讀取（之前我們已修正過的寫法）
+# 從 Secrets 讀取 credentials（之前已修正的 .to_dict()）
 credentials = st.secrets["credentials"].to_dict()
 
 authenticator = stauth.Authenticate(
@@ -22,19 +22,23 @@ authenticator = stauth.Authenticate(
     st.secrets["cookie"]["expiry_days"]
 )
 
-# === 這裡是重點修正 ===
-name, authentication_status, username = authenticator.login('main')
+# === 修正重點：不要 unpack login() 的回傳值 ===
+authenticator.login('main')   # 只呼叫，不接收回傳值
 
-if authentication_status:
+# 改從 session_state 判斷登入狀態
+if st.session_state.get("authentication_status"):
     # 登入成功
-    authenticator.logout('登出', 'sidebar')   # logout 的第一個參數是按鈕文字，第二個是位置
-    st.success(f"歡迎回來，{name}！")
+    authenticator.logout('登出', 'sidebar')
+    st.success(f"歡迎回來，{st.session_state.get('name')}！")
     st.title("K-Line AI Trading")
-    # ← 這裡開始放你原本的所有 K 線交易內容、圖表、AI 功能等
+    
+    # ← 從這裡開始放你原本的所有 K 線交易內容、圖表、AI 功能等
+    # st.write("這裡是你的主程式...")
 
-elif authentication_status is False:
+elif st.session_state.get("authentication_status") is False:
     st.error("使用者名稱或密碼錯誤！")
-elif authentication_status is None:
+
+elif st.session_state.get("authentication_status") is None:
     st.warning("請輸入帳號與密碼")
 ###
 
