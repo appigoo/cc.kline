@@ -12,24 +12,25 @@ import pytz
 import streamlit as st
 import streamlit_authenticator as stauth
 
-# 正確寫法：使用 .to_dict()
+# 從 Secrets 讀取（之前我們已修正過的寫法）
 credentials = st.secrets["credentials"].to_dict()
 
 authenticator = stauth.Authenticate(
-    credentials,                                      # ← 這裡改成 .to_dict()
+    credentials,
     st.secrets["cookie"]["name"],
     st.secrets["cookie"]["key"],
     st.secrets["cookie"]["expiry_days"]
 )
 
-# 顯示登入表單
-name, authentication_status, username = authenticator.login("登入", "main")
+# === 這裡是重點修正 ===
+name, authentication_status, username = authenticator.login('main')
 
 if authentication_status:
-    authenticator.logout("登出", "sidebar")
+    # 登入成功
+    authenticator.logout('登出', 'sidebar')   # logout 的第一個參數是按鈕文字，第二個是位置
     st.success(f"歡迎回來，{name}！")
     st.title("K-Line AI Trading")
-    # ← 這裡放你原本的所有 K 線交易內容
+    # ← 這裡開始放你原本的所有 K 線交易內容、圖表、AI 功能等
 
 elif authentication_status is False:
     st.error("使用者名稱或密碼錯誤！")
