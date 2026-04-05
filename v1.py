@@ -8,39 +8,7 @@ from datetime import datetime
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 import pytz
-###
-import streamlit as st
-import streamlit_authenticator as stauth
 
-# 從 Secrets 讀取 credentials（之前已修正的 .to_dict()）
-credentials = st.secrets["credentials"].to_dict()
-
-authenticator = stauth.Authenticate(
-    credentials,
-    st.secrets["cookie"]["name"],
-    st.secrets["cookie"]["key"],
-    st.secrets["cookie"]["expiry_days"]
-)
-
-# === 修正重點：不要 unpack login() 的回傳值 ===
-authenticator.login('main')   # 只呼叫，不接收回傳值
-
-# 改從 session_state 判斷登入狀態
-if st.session_state.get("authentication_status"):
-    # 登入成功
-    authenticator.logout('登出', 'sidebar')
-    st.success(f"歡迎回來，{st.session_state.get('name')}！")
-    st.title("K-Line AI Trading")
-    
-    # ← 從這裡開始放你原本的所有 K 線交易內容、圖表、AI 功能等
-    # st.write("這裡是你的主程式...")
-
-elif st.session_state.get("authentication_status") is False:
-    st.error("使用者名稱或密碼錯誤！")
-
-elif st.session_state.get("authentication_status") is None:
-    st.warning("請輸入帳號與密碼")
-###
 
 st.set_page_config(page_title="K-Line AI Trading / K線 AI 交易", page_icon="📊",
                    layout="wide", initial_sidebar_state="expanded")
