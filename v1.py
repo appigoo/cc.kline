@@ -8,47 +8,6 @@ from datetime import datetime
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 import pytz
-###
-import streamlit as st
-
-def check_password():
-    """返回 True 如果用户输入了正确的密码"""
-
-    def password_entered():
-        """检查输入是否匹配 Secrets 中的配置"""
-        # 从 st.secrets 读取配置
-        if (
-            st.session_state["username"] == st.secrets["USERNAME"]
-            and st.session_state["password"] == st.secrets["PASSWORD"]
-        ):
-            st.session_state["password_correct"] = True
-            del st.session_state["password"]  # 安全起见，删除 session 里的明文
-            del st.session_state["username"]
-        else:
-            st.session_state["password_correct"] = False
-
-    # 如果已经验证成功，直接返回 True
-    if st.session_state.get("password_correct", False):
-        return True
-
-    # 显示登录界面
-    st.title("🔒 访问受限")
-    st.text_input("用户名", key="username")
-    st.text_input("密码", type="password", key="password")
-    st.button("登录", on_click=password_entered)
-
-    if "password_correct" in st.session_state and not st.session_state["password_correct"]:
-        st.error("😕 用户名或密码错误，请重试。")
-        
-    return False
-
-# --- 程序主逻辑 ---
-if check_password():
-    st.success("✅ 登录成功！")
-    # 这里放你原本 https://cckline.streamlit.app 的所有 K 线图代码
-    st.title("CCKline 数据分析看板")
-    # 例如：st.line_chart(data)
-###
 
 st.set_page_config(page_title="K-Line AI Trading / K線 AI 交易", page_icon="📊",
                    layout="wide", initial_sidebar_state="expanded")
