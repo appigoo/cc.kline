@@ -200,7 +200,7 @@ st.markdown("""
 :root {
     --bg:#0a0e1a; --surface:#111827; --card:#1a2235; --border:#1e3a5f;
     --accent:#00d4ff; --green:#00ff88; --red:#ff4466; --yellow:#ffd700;
-    --orange:#ff9500; --purple:#bf7fff; --text:#c8d8e8; --muted:#5a7a9a;
+    --orange:#ff9500; --purple:#bf7fff; --text:#eded07; --muted:#5a7a9a;
 }
 html,body,[class*="css"]{font-family:'Noto Sans HK',sans-serif;background-color:var(--bg);color:var(--text);}
 .stApp{background:var(--bg);}
