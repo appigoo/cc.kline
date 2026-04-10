@@ -295,7 +295,7 @@ div[data-testid="stSidebar"] label{color:var(--text)!important;}
 /* ── LOG BOX ── */
 .log-box{background:#060a12;border:1px solid var(--border);border-radius:8px;
     padding:12px;font-family:'Share Tech Mono',monospace;font-size:0.78rem;
-    color:#5a9a7a;max-height:220px;overflow-y:auto;line-height:1.6;}
+    color:#d9b61c;max-height:220px;overflow-y:auto;line-height:1.6;}
 hr{border-color:var(--border);}
 .alert-box{background:rgba(255,215,0,0.1);border:1px solid var(--yellow);
     border-radius:8px;padding:10px 15px;font-size:0.83rem;color:var(--yellow);margin:8px 0;}
