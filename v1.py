@@ -842,7 +842,7 @@ with tab_conf:
                     <div style='font-family:Share Tech Mono,monospace;color:#ff9500;
                                 font-size:0.82rem;margin-bottom:8px;'>⚡ {g["label"]}</div>
                     <div>{badges}</div>
-                    <div style='font-size:0.72rem;color:#5a7a9a;margin-top:8px;'>{align_txt}</div>
+                    <div style='font-size:0.72rem;color:#00d4ff;margin-top:8px;'>{align_txt}</div>
                 </div>""", unsafe_allow_html=True)
 
         st.markdown("---")
