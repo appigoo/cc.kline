@@ -200,7 +200,7 @@ st.markdown("""
 :root {
     --bg:#0a0e1a; --surface:#111827; --card:#1a2235; --border:#1e3a5f;
     --accent:#00d4ff; --green:#00ff88; --red:#ff4466; --yellow:#ffd700;
-    --orange:#ff9500; --purple:#bf7fff; --text:#eded07; --muted:#5a7a9a;
+    --orange:#ff9500; --purple:#bf7fff; --text:#eded07; --muted:#f0da18;
 }
 html,body,[class*="css"]{font-family:'Noto Sans HK',sans-serif;background-color:var(--bg);color:var(--text);}
 .stApp{background:var(--bg);}
@@ -608,7 +608,7 @@ with st.sidebar:
     st.markdown(f"""<div style='font-family:Share Tech Mono,monospace;color:#ff9500;
         font-size:0.92rem;letter-spacing:1px;padding:4px 0 2px;'>{t('mtf_section')}</div>""",
         unsafe_allow_html=True)
-    st.markdown(f"""<div style='font-size:0.76rem;color:#5a7a9a;margin-bottom:8px;'>
+    st.markdown(f"""<div style='font-size:0.76rem;color:#f0da18;margin-bottom:8px;'>
         {t('mtf_hint')}</div>""", unsafe_allow_html=True)
 
     mtf_enabled = st.toggle(t("mtf_enable"), value=True)
@@ -874,7 +874,7 @@ with tab_conf:
                                      font-family:Share Tech Mono,monospace;'>{r['ticker']}</span>
                         <span style='font-size:1rem;font-weight:700;'>{s_lbl}</span>
                     </div>
-                    <div style='font-size:0.75rem;color:#5a7a9a;margin-bottom:8px;'>
+                    <div style='font-size:0.75rem;color:#f0da18;margin-bottom:8px;'>
                         {grp_lbl}: {r['group_label']} &nbsp;｜&nbsp;
                         {per_lbl}: {" + ".join(r['group_tfs'])} &nbsp;｜&nbsp;
                         {tm_lbl}: {r['ts']}
@@ -923,7 +923,7 @@ with tab_single:
                 <div style='display:flex;justify-content:space-between;margin-bottom:8px;'>
                     <span style='font-size:1.05rem;font-weight:700;
                                  font-family:Share Tech Mono,monospace;'>
-                        {r['ticker']} <span style='color:#5a7a9a;font-size:0.85rem;'>[{r['tf']}]</span>
+                        {r['ticker']} <span style='color:#f0da18;font-size:0.85rem;'>[{r['tf']}]</span>
                     </span>
                     <span style='font-size:0.95rem;font-weight:700;'>{se}</span>
                 </div>
