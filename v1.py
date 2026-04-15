@@ -192,115 +192,257 @@ def t(key):
 
 
 # ═════════════════════════════════════════════
-# CSS
+# CSS — LIGHT THEME (matching screenshot)
 # ═════════════════════════════════════════════
 st.markdown("""
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Noto+Sans+HK:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+HK:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700&display=swap');
 :root {
-    --bg:#0a0e1a; --surface:#111827; --card:#a72bad; --border:#1e3a5f;
-    --accent:#00d4ff; --green:#00ff88; --red:#ff4466; --yellow:#ffd700;
-    --orange:#ff9500; --purple:#bf7fff; --text:#eded07; --muted:#f0da18;
+    --bg: #f5f5f5;
+    --surface: #ffffff;
+    --card: #ffffff;
+    --border: #e0e0e0;
+    --accent: #2e7d32;
+    --green: #2e9e5a;
+    --red: #d44;
+    --yellow: #e6a817;
+    --orange: #e67e22;
+    --purple: #7b61ff;
+    --text: #333333;
+    --text-secondary: #666666;
+    --muted: #999999;
 }
-html,body,[class*="css"]{font-family:'Noto Sans HK',sans-serif;background-color:var(--bg);color:var(--text);}
-.stApp{background:var(--bg);}
-h1,h2,h3{font-family:'Share Tech Mono',monospace;color:var(--accent);letter-spacing:2px;}
+html, body, [class*="css"] {
+    font-family: 'Noto Sans HK', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+    color: var(--text);
+}
+.stApp {
+    background: var(--bg) !important;
+}
+h1, h2, h3 {
+    font-family: 'Noto Sans HK', 'Inter', sans-serif !important;
+    color: var(--text) !important;
+    letter-spacing: 0.5px;
+    font-weight: 600 !important;
+}
 
 /* ── LANG TOGGLE ── */
-.lang-bar{display:flex;justify-content:flex-end;align-items:center;margin-bottom:12px;gap:10px;}
-.lang-badge{font-family:'Share Tech Mono',monospace;font-size:0.72rem;color:var(--muted);letter-spacing:1px;}
-.lang-toggle-btn{
-    background:linear-gradient(135deg,#0d2040,#1a3a5f);
-    border:1px solid var(--accent);border-radius:20px;
-    padding:6px 16px;color:var(--accent);font-size:0.8rem;
-    cursor:pointer;font-family:'Share Tech Mono',monospace;
-    letter-spacing:0.5px;transition:all 0.2s;white-space:nowrap;
+.lang-bar { display:flex; justify-content:flex-end; align-items:center; margin-bottom:12px; gap:10px; }
+.lang-badge { font-size:0.72rem; color:var(--muted); letter-spacing:1px; }
+.lang-toggle-btn {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 6px 16px;
+    color: var(--text);
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
 }
-.lang-toggle-btn:hover{box-shadow:0 0 12px rgba(0,212,255,0.4);background:#1a3a5f;}
+.lang-toggle-btn:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.1); border-color: var(--accent); }
 
 /* ── HEADER ── */
-.main-header{background:linear-gradient(135deg,#0a0e1a,#0d1f3a,#0a0e1a);
-    border:1px solid var(--border);border-radius:12px;padding:20px 30px;
-    margin-bottom:20px;text-align:center;position:relative;overflow:hidden;}
-.main-header::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;
-    background:linear-gradient(90deg,transparent,var(--accent),transparent);}
-.main-header h1{font-size:1.9rem;margin:0;text-shadow:0 0 20px var(--accent);}
-.main-header p{color:var(--muted);margin:5px 0 0;font-size:0.83rem;}
+.main-header {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 30px;
+    margin-bottom: 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.main-header::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--green), var(--orange), var(--green));
+}
+.main-header h1 { font-size: 1.9rem; margin: 0; color: var(--text) !important; }
+.main-header p { color: var(--muted); margin: 5px 0 0; font-size: 0.83rem; }
 
 /* ── METRICS ── */
-.metric-card{background:var(--card);border:1px solid var(--border);border-radius:10px;
-    padding:15px 20px;text-align:center;position:relative;overflow:hidden;}
-.metric-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;
-    background:var(--accent);opacity:0.4;}
-.metric-val{font-family:'Share Tech Mono',monospace;font-size:1.5rem;color:var(--accent);}
-.metric-lbl{font-size:0.75rem;color:var(--muted);margin-top:4px;}
+.metric-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 15px 20px;
+    text-align: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.metric-val { font-weight: 700; font-size: 1.5rem; }
+.metric-lbl { font-size: 0.75rem; color: var(--muted); margin-top: 4px; }
 
 /* ── CONFLUENCE CARD ── */
-.confluence-card{border-radius:12px;padding:18px 22px;margin:10px 0;
-    border:2px solid;position:relative;overflow:hidden;}
-.conf-watermark{position:absolute;top:8px;right:14px;font-size:0.7rem;
-    font-family:'Share Tech Mono',monospace;opacity:0.45;letter-spacing:1px;}
-.conf-buy{background:rgba(0,255,136,0.06);border-color:var(--green);
-    box-shadow:0 0 20px rgba(0,255,136,0.15);}
-.conf-sell{background:rgba(255,68,102,0.06);border-color:var(--red);
-    box-shadow:0 0 20px rgba(255,68,102,0.15);}
+.confluence-card {
+    border-radius: 12px;
+    padding: 18px 22px;
+    margin: 10px 0;
+    border: 1px solid;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+.conf-watermark {
+    position: absolute;
+    top: 8px; right: 14px;
+    font-size: 0.7rem;
+    opacity: 0.35;
+    letter-spacing: 1px;
+    color: var(--muted);
+}
+.conf-buy {
+    background: #f0faf3;
+    border-color: var(--green);
+}
+.conf-sell {
+    background: #fdf2f2;
+    border-color: var(--red);
+}
 
 /* ── TF BADGES ── */
-.tf-grid{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0;}
-.tf-badge{display:inline-flex;flex-direction:column;align-items:center;border-radius:8px;
-    padding:6px 12px;min-width:60px;font-family:'Share Tech Mono',monospace;font-size:0.75rem;}
-.tf-badge-buy{background:rgba(0,255,136,0.15);border:1px solid var(--green);color:var(--green);}
-.tf-badge-sell{background:rgba(255,68,102,0.15);border:1px solid var(--red);color:var(--red);}
-.tf-badge-neutral{background:rgba(90,122,154,0.2);border:1px solid var(--muted);color:var(--muted);}
-.tf-badge span{font-size:0.62rem;opacity:0.7;margin-top:2px;}
+.tf-grid { display: flex; gap: 8px; flex-wrap: wrap; margin: 10px 0; }
+.tf-badge {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 8px;
+    padding: 6px 12px;
+    min-width: 60px;
+    font-weight: 600;
+    font-size: 0.75rem;
+}
+.tf-badge-buy { background: #e8f5e9; border: 1px solid var(--green); color: var(--green); }
+.tf-badge-sell { background: #ffebee; border: 1px solid var(--red); color: var(--red); }
+.tf-badge-neutral { background: #f5f5f5; border: 1px solid var(--muted); color: var(--muted); }
+.tf-badge span { font-size: 0.62rem; opacity: 0.7; margin-top: 2px; }
 
 /* ── SIGNAL CARDS ── */
-.signal-card{border-radius:10px;padding:14px 18px;margin:8px 0;border-left:4px solid;font-size:0.88rem;}
-.signal-buy{background:rgba(0,255,136,0.08);border-color:var(--green);}
-.signal-sell{background:rgba(255,68,102,0.08);border-color:var(--red);}
-.signal-neutral{background:rgba(255,215,0,0.08);border-color:var(--yellow);}
+.signal-card {
+    background: var(--surface);
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin: 8px 0;
+    border-left: 4px solid;
+    font-size: 0.88rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.signal-buy { border-color: var(--green); }
+.signal-sell { border-color: var(--red); }
+.signal-neutral { border-color: var(--yellow); }
 
 /* ── MTF CONFIG BOX ── */
-.mtf-box{background:linear-gradient(135deg,#0d1a2e,#101e38);border:1px solid #2a4a6f;
-    border-radius:10px;padding:12px 16px;margin:6px 0;}
-.mtf-box-title{font-family:'Share Tech Mono',monospace;color:var(--orange);
-    font-size:0.82rem;letter-spacing:1px;margin-bottom:6px;}
+.mtf-box {
+    background: #fafafa;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 16px;
+    margin: 6px 0;
+}
+.mtf-box-title {
+    color: var(--orange);
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+}
 
 /* ── PATTERN TAGS ── */
-.pattern-tag{display:inline-block;background:rgba(0,212,255,0.12);
-    border:1px solid rgba(0,212,255,0.3);border-radius:5px;padding:2px 8px;
-    font-size:0.75rem;color:var(--accent);margin:2px;
-    font-family:'Share Tech Mono',monospace;}
+.pattern-tag {
+    display: inline-block;
+    background: #e8f5e9;
+    border: 1px solid #c8e6c9;
+    border-radius: 5px;
+    padding: 2px 8px;
+    font-size: 0.75rem;
+    color: var(--green);
+    margin: 2px;
+    font-weight: 500;
+}
 
 /* ── STATUS DOTS ── */
-.status-dot{width:8px;height:8px;border-radius:50%;display:inline-block;margin-right:6px;}
-.dot-live{background:var(--green);box-shadow:0 0 8px var(--green);animation:pulse 2s infinite;}
-.dot-conf{background:var(--orange);box-shadow:0 0 8px var(--orange);animation:pulse 1.5s infinite;}
-.dot-off{background:var(--muted);}
-@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.3;}}
+.status-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; margin-right: 6px; }
+.dot-live { background: var(--green); box-shadow: 0 0 6px var(--green); animation: pulse 2s infinite; }
+.dot-conf { background: var(--orange); box-shadow: 0 0 6px var(--orange); animation: pulse 1.5s infinite; }
+.dot-off { background: var(--muted); }
+@keyframes pulse { 0%,100%{ opacity:1; } 50%{ opacity:0.3; } }
 
 /* ── BUTTONS ── */
-.stButton>button{background:linear-gradient(135deg,#0d2040,#1a3a5f)!important;
-    color:var(--accent)!important;border:1px solid var(--border)!important;
-    border-radius:8px!important;font-family:'Share Tech Mono',monospace!important;letter-spacing:1px;}
-.stButton>button:hover{border-color:var(--accent)!important;
-    box-shadow:0 0 12px rgba(0,212,255,0.3)!important;}
+.stButton > button {
+    background: var(--surface) !important;
+    color: var(--text) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 8px !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.3px;
+    transition: all 0.2s;
+}
+.stButton > button:hover {
+    border-color: var(--accent) !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08) !important;
+    color: var(--accent) !important;
+}
 
 /* ── SIDEBAR ── */
-div[data-testid="stSidebar"]{background:var(--surface)!important;border-right:1px solid var(--border);}
-div[data-testid="stSidebar"] label{color:var(--text)!important;}
-.stSelectbox>div>div,.stMultiSelect>div>div{background:var(--card)!important;
-    border-color:var(--border)!important;color:var(--text)!important;}
+div[data-testid="stSidebar"] {
+    background: var(--surface) !important;
+    border-right: 1px solid var(--border);
+}
+div[data-testid="stSidebar"] label { color: var(--text) !important; }
 
 /* ── LOG BOX ── */
-.log-box{background:#060a12;border:1px solid var(--border);border-radius:8px;
-    padding:12px;font-family:'Share Tech Mono',monospace;font-size:0.78rem;
-    color:#d9b61c;max-height:220px;overflow-y:auto;line-height:1.6;}
-hr{border-color:var(--border);}
-.alert-box{background:rgba(255,215,0,0.1);border:1px solid var(--yellow);
-    border-radius:8px;padding:10px 15px;font-size:0.83rem;color:var(--yellow);margin:8px 0;}
-.conf-alert{background:rgba(255,149,0,0.1);border:1px solid var(--orange);
-    border-radius:8px;padding:10px 15px;font-size:0.83rem;color:var(--orange);margin:8px 0;}
+.log-box {
+    background: #fafafa;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px;
+    font-family: 'SF Mono', 'Menlo', 'Consolas', monospace;
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+    max-height: 220px;
+    overflow-y: auto;
+    line-height: 1.6;
+}
+hr { border-color: var(--border); }
+.alert-box {
+    background: #fffde7;
+    border: 1px solid var(--yellow);
+    border-radius: 8px;
+    padding: 10px 15px;
+    font-size: 0.83rem;
+    color: #7a6600;
+    margin: 8px 0;
+}
+.conf-alert {
+    background: #fff3e0;
+    border: 1px solid var(--orange);
+    border-radius: 8px;
+    padding: 10px 15px;
+    font-size: 0.83rem;
+    color: #a85600;
+    margin: 8px 0;
+}
+
+/* ── Streamlit overrides for light theme ── */
+.stTabs [data-baseweb="tab-list"] {
+    gap: 8px;
+}
+.stTabs [data-baseweb="tab"] {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px 8px 0 0;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+.stTabs [aria-selected="true"] {
+    background: var(--surface) !important;
+    border-bottom-color: var(--surface) !important;
+    color: var(--accent) !important;
+    font-weight: 600;
+}
 </style>
 """, unsafe_allow_html=True)
 
@@ -409,7 +551,6 @@ class CandlestickPatterns:
 
     def scan_latest(self):
         i = self.n - 1
-        # Pattern names kept bilingual (zh/en) so signal cards are always readable
         checks = [
             (self.doji(i),               "十字星 Doji",           "NEUTRAL", 50),
             (self.hammer(i),              "錘子線 Hammer",         "BUY",     75),
@@ -546,36 +687,36 @@ def build_confluence_msg(ticker, sig, tf_details, price, atr, rsi, lang):
 
 
 # ═════════════════════════════════════════════
-# CHART
+# CHART (light theme)
 # ═════════════════════════════════════════════
 def build_chart(df, ticker, tf):
     dp=df.tail(120)
     fig=make_subplots(rows=3,cols=1,shared_xaxes=True,
                       row_heights=[0.6,0.2,0.2],vertical_spacing=0.03)
     fig.add_trace(go.Candlestick(x=dp.index,open=dp['Open'],high=dp['High'],
-        low=dp['Low'],close=dp['Close'],increasing_line_color='#00ff88',
-        decreasing_line_color='#ff4466',name="Candles"),row=1,col=1)
-    for ema,col,w in [('EMA9','#00d4ff',1),('EMA21','#ffd700',1),('EMA50','#ff7f50',1.5)]:
+        low=dp['Low'],close=dp['Close'],increasing_line_color='#2e9e5a',
+        decreasing_line_color='#dd4444',name="Candles"),row=1,col=1)
+    for ema,col,w in [('EMA9','#5b9bd5',1),('EMA21','#e6a817',1),('EMA50','#e67e22',1.5)]:
         fig.add_trace(go.Scatter(x=dp.index,y=dp[ema],line=dict(color=col,width=w),name=ema),row=1,col=1)
     fig.add_trace(go.Scatter(x=dp.index,y=dp['BB_upper'],
-        line=dict(color='rgba(150,150,255,0.4)',width=1,dash='dot'),showlegend=False),row=1,col=1)
+        line=dict(color='rgba(180,180,200,0.5)',width=1,dash='dot'),showlegend=False),row=1,col=1)
     fig.add_trace(go.Scatter(x=dp.index,y=dp['BB_lower'],fill='tonexty',
-        fillcolor='rgba(100,100,255,0.06)',
-        line=dict(color='rgba(150,150,255,0.4)',width=1,dash='dot'),showlegend=False),row=1,col=1)
-    colors=['#00ff88' if v>=0 else '#ff4466' for v in dp['MACD_hist']]
+        fillcolor='rgba(180,180,220,0.08)',
+        line=dict(color='rgba(180,180,200,0.5)',width=1,dash='dot'),showlegend=False),row=1,col=1)
+    colors=['#2e9e5a' if v>=0 else '#dd4444' for v in dp['MACD_hist']]
     fig.add_trace(go.Bar(x=dp.index,y=dp['MACD_hist'],marker_color=colors,showlegend=False),row=2,col=1)
-    fig.add_trace(go.Scatter(x=dp.index,y=dp['MACD'],line=dict(color='#00d4ff',width=1),name='MACD'),row=2,col=1)
-    fig.add_trace(go.Scatter(x=dp.index,y=dp['MACD_signal'],line=dict(color='#ffd700',width=1),name='Signal'),row=2,col=1)
-    fig.add_trace(go.Scatter(x=dp.index,y=dp['RSI'],line=dict(color='#bf7fff',width=1.5),name='RSI'),row=3,col=1)
-    fig.add_hline(y=70,line_dash="dash",line_color="#ff4466",line_width=0.8,row=3,col=1)
-    fig.add_hline(y=30,line_dash="dash",line_color="#00ff88",line_width=0.8,row=3,col=1)
-    fig.update_layout(paper_bgcolor='#0a0e1a',plot_bgcolor='#0a0e1a',
-        font=dict(color='#c8d8e8',size=11),xaxis_rangeslider_visible=False,
-        title=dict(text=f"<b>{ticker}</b> [{tf}]",font=dict(color='#00d4ff',size=14),x=0.5),
-        legend=dict(bgcolor='rgba(0,0,0,0)',font=dict(size=10)),
+    fig.add_trace(go.Scatter(x=dp.index,y=dp['MACD'],line=dict(color='#5b9bd5',width=1),name='MACD'),row=2,col=1)
+    fig.add_trace(go.Scatter(x=dp.index,y=dp['MACD_signal'],line=dict(color='#e6a817',width=1),name='Signal'),row=2,col=1)
+    fig.add_trace(go.Scatter(x=dp.index,y=dp['RSI'],line=dict(color='#7b61ff',width=1.5),name='RSI'),row=3,col=1)
+    fig.add_hline(y=70,line_dash="dash",line_color="#dd4444",line_width=0.8,row=3,col=1)
+    fig.add_hline(y=30,line_dash="dash",line_color="#2e9e5a",line_width=0.8,row=3,col=1)
+    fig.update_layout(paper_bgcolor='#ffffff',plot_bgcolor='#ffffff',
+        font=dict(color='#333333',size=11),xaxis_rangeslider_visible=False,
+        title=dict(text=f"<b>{ticker}</b> [{tf}]",font=dict(color='#333333',size=14),x=0.5),
+        legend=dict(bgcolor='rgba(255,255,255,0.9)',font=dict(size=10)),
         margin=dict(l=10,r=10,t=40,b=10),height=620)
     for ax in ['xaxis','xaxis2','xaxis3','yaxis','yaxis2','yaxis3']:
-        fig.update_layout(**{ax:dict(gridcolor='#1e3a5f',showgrid=True)})
+        fig.update_layout(**{ax:dict(gridcolor='#e8e8e8',showgrid=True)})
     return fig
 
 
@@ -583,10 +724,9 @@ def build_chart(df, ticker, tf):
 # SIDEBAR
 # ═════════════════════════════════════════════
 with st.sidebar:
-    # Language toggle in sidebar too
     st.markdown(f"""<div style='text-align:center;padding:10px 0;
-        font-family:Share Tech Mono,monospace;color:#00d4ff;
-        font-size:1.05rem;letter-spacing:2px;'>{t('sidebar_title')}</div>""",
+        color:#333;font-size:1.05rem;font-weight:600;
+        letter-spacing:1px;'>{t('sidebar_title')}</div>""",
         unsafe_allow_html=True)
 
     if st.button(t("lang_btn"), key="lang_toggle_sidebar", use_container_width=True):
@@ -605,10 +745,10 @@ with st.sidebar:
     st.markdown("---")
 
     # ── MTF Confluence ──
-    st.markdown(f"""<div style='font-family:Share Tech Mono,monospace;color:#ff9500;
-        font-size:0.92rem;letter-spacing:1px;padding:4px 0 2px;'>{t('mtf_section')}</div>""",
+    st.markdown(f"""<div style='color:#e67e22;
+        font-size:0.92rem;font-weight:600;letter-spacing:0.5px;padding:4px 0 2px;'>{t('mtf_section')}</div>""",
         unsafe_allow_html=True)
-    st.markdown(f"""<div style='font-size:0.76rem;color:#f0da18;margin-bottom:8px;'>
+    st.markdown(f"""<div style='font-size:0.76rem;color:#999;margin-bottom:8px;'>
         {t('mtf_hint')}</div>""", unsafe_allow_html=True)
 
     mtf_enabled = st.toggle(t("mtf_enable"), value=True)
@@ -626,7 +766,7 @@ with st.sidebar:
                 mtf_groups.append({"label": lbl, "tfs": g_tfs})
 
         active_str = t("mtf_active").format(len(mtf_groups))
-        st.markdown(f"<div style='font-size:0.78rem;color:#ff9500;padding:4px 0;'>"
+        st.markdown(f"<div style='font-size:0.78rem;color:#e67e22;padding:4px 0;'>"
                     f"{active_str}</div>", unsafe_allow_html=True)
 
     st.markdown("---")
@@ -657,9 +797,9 @@ with st.sidebar:
     require_trend_confirm = st.toggle(t("trend_confirm"), value=True)
 
     st.markdown("---")
-    st.markdown(f"""<div style='font-size:0.72rem;color:#3a5a7a;text-align:center;line-height:1.8;'>
+    st.markdown(f"""<div style='font-size:0.72rem;color:#999;text-align:center;line-height:1.8;'>
         📊 K-Line AI / K線 AI<br>
-        <span style='color:#1e5a4a;'>{t('disclaimer')}</span></div>""",
+        <span style='color:#bbb;'>{t('disclaimer')}</span></div>""",
         unsafe_allow_html=True)
 
 
@@ -698,8 +838,7 @@ def analyse_tf(ticker, tf):
     if pats:
         bn=sum(1 for p in pats if p['signal']=='BUY')
         sn=sum(1 for p in pats if p['signal']=='SELL')
-        sig='BUY' if bn>sn else 'SELL' if sn>bn else 'NEUTRAL'
-        sa=float(np.mean([p['strength'] for p in pats]))
+        sig='BUY' if bn>sn else 'SELL' if sn>bn else 'NEUTRAL'; sa=float(np.mean([p['strength'] for p in pats]))
     else:
         sig=trend if trend!='NEUTRAL' else 'NEUTRAL'; sa=0.0
     return {"ticker":ticker,"tf":tf,"price":price,"rsi":rsi,"atr":atr,
@@ -802,12 +941,12 @@ conf_buy = sum(1 for r in confluence_results if r['signal']=='BUY')
 conf_sel = sum(1 for r in confluence_results if r['signal']=='SELL')
 
 metric_data=[
-    (str(len(tickers)), t("metric_tickers"),   "var(--accent)"),
-    (str(buy_n),        t("metric_buy"),        "var(--green)"),
-    (str(sell_n),       t("metric_sell"),       "var(--red)"),
-    (str(conf_buy),     t("metric_conf_buy"),   "var(--orange)"),
-    (str(conf_sel),     t("metric_conf_sell"),  "#ff6080"),
-    (last_str,          t("metric_last_scan"),  "var(--accent)"),
+    (str(len(tickers)), t("metric_tickers"),   "#333"),
+    (str(buy_n),        t("metric_buy"),        "#2e9e5a"),
+    (str(sell_n),       t("metric_sell"),       "#dd4444"),
+    (str(conf_buy),     t("metric_conf_buy"),   "#e67e22"),
+    (str(conf_sel),     t("metric_conf_sell"),  "#dd4444"),
+    (last_str,          t("metric_last_scan"),  "#333"),
 ]
 for col,(val,lbl,color) in zip(st.columns(6), metric_data):
     with col:
@@ -837,12 +976,12 @@ with tab_conf:
                 badges="".join([f"<span class='pattern-tag'>{tf}</span>" for tf in g['tfs']])
                 align_txt=f"{len(g['tfs'])} {t('mtf_all_align')}"
                 st.markdown(f"""
-                <div style='background:#0d1f38;border:1px solid #2a4a6f;border-radius:10px;
+                <div style='background:#fafafa;border:1px solid #e0e0e0;border-radius:10px;
                             padding:14px;text-align:center;'>
-                    <div style='font-family:Share Tech Mono,monospace;color:#ff9500;
+                    <div style='color:#e67e22;font-weight:600;
                                 font-size:0.82rem;margin-bottom:8px;'>⚡ {g["label"]}</div>
                     <div>{badges}</div>
-                    <div style='font-size:0.72rem;color:#00d4ff;margin-top:8px;'>{align_txt}</div>
+                    <div style='font-size:0.72rem;color:#2e9e5a;margin-top:8px;'>{align_txt}</div>
                 </div>""", unsafe_allow_html=True)
 
         st.markdown("---")
@@ -870,24 +1009,23 @@ with tab_conf:
                 <div class='confluence-card {cls}'>
                     <div class='conf-watermark'>{wm}</div>
                     <div style='display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;'>
-                        <span style='font-size:1.25rem;font-weight:700;
-                                     font-family:Share Tech Mono,monospace;'>{r['ticker']}</span>
+                        <span style='font-size:1.25rem;font-weight:700;color:#333;'>{r['ticker']}</span>
                         <span style='font-size:1rem;font-weight:700;'>{s_lbl}</span>
                     </div>
-                    <div style='font-size:0.75rem;color:#f0da18;margin-bottom:8px;'>
+                    <div style='font-size:0.75rem;color:#999;margin-bottom:8px;'>
                         {grp_lbl}: {r['group_label']} &nbsp;｜&nbsp;
                         {per_lbl}: {" + ".join(r['group_tfs'])} &nbsp;｜&nbsp;
                         {tm_lbl}: {r['ts']}
                     </div>
                     <div class='tf-grid'>{tf_badges}</div>
-                    <div style='display:flex;gap:16px;font-size:0.82rem;color:#8aabb0;
+                    <div style='display:flex;gap:16px;font-size:0.82rem;color:#888;
                                 margin-top:10px;padding-top:10px;
-                                border-top:1px solid rgba(255,255,255,0.06);flex-wrap:wrap;'>
-                        <span>{t('price_lbl')}: <b style='color:#c8d8e8'>${r['price']:.2f}</b></span>
-                        <span>{t('rsi_lbl')}: <b style='color:#c8d8e8'>{r['rsi']:.1f}</b></span>
-                        <span>{t('sl_lbl')}: <b style='color:#ff8888'>${sl}</b></span>
-                        <span>{t('tp_lbl')}: <b style='color:#88ffcc'>${tp}</b></span>
-                        <span>{t('rr_lbl')}: <b style='color:#c8d8e8'>1:2.5</b></span>
+                                border-top:1px solid #eee;flex-wrap:wrap;'>
+                        <span>{t('price_lbl')}: <b style='color:#333'>${r['price']:.2f}</b></span>
+                        <span>{t('rsi_lbl')}: <b style='color:#333'>{r['rsi']:.1f}</b></span>
+                        <span>{t('sl_lbl')}: <b style='color:#dd4444'>${sl}</b></span>
+                        <span>{t('tp_lbl')}: <b style='color:#2e9e5a'>${tp}</b></span>
+                        <span>{t('rr_lbl')}: <b style='color:#333'>1:2.5</b></span>
                         <span>{t('conf_strength')}</span>
                     </div>
                 </div>""", unsafe_allow_html=True)
@@ -915,25 +1053,24 @@ with tab_single:
                 t("sig_sell") if r['signal']=='SELL' else t("sig_neutral"))
             tags="".join([f"<span class='pattern-tag'>{p['pattern']} {p['strength']}%</span>"
                            for p in r['patterns']]) or \
-                 f"<span style='color:#3a5a7a;font-size:0.78rem;'>{t('sig_indicator_only')}</span>"
+                 f"<span style='color:#999;font-size:0.78rem;'>{t('sig_indicator_only')}</span>"
             sl=round(r['price']-1.5*r['atr'],2) if r['signal']=='BUY' else round(r['price']+1.5*r['atr'],2)
             tp=round(r['price']+2.5*r['atr'],2) if r['signal']=='BUY' else round(r['price']-2.5*r['atr'],2)
             st.markdown(f"""
             <div class='signal-card {cls}'>
                 <div style='display:flex;justify-content:space-between;margin-bottom:8px;'>
-                    <span style='font-size:1.05rem;font-weight:700;
-                                 font-family:Share Tech Mono,monospace;'>
-                        {r['ticker']} <span style='color:#f0da18;font-size:0.85rem;'>[{r['tf']}]</span>
+                    <span style='font-size:1.05rem;font-weight:700;color:#333;'>
+                        {r['ticker']} <span style='color:#999;font-size:0.85rem;'>[{r['tf']}]</span>
                     </span>
                     <span style='font-size:0.95rem;font-weight:700;'>{se}</span>
                 </div>
                 <div style='margin-bottom:8px;'>{tags}</div>
-                <div style='display:flex;gap:16px;font-size:0.82rem;color:#8aabb0;flex-wrap:wrap;'>
-                    <span>{t('price_lbl')}: <b style='color:#c8d8e8'>${r['price']:.2f}</b></span>
-                    <span>{t('rsi_lbl')}: <b style='color:#c8d8e8'>{r['rsi']:.1f}</b></span>
-                    <span>{t('sl_lbl')}: <b style='color:#ff8888'>${sl}</b></span>
-                    <span>{t('tp_lbl')}: <b style='color:#88ffcc'>${tp}</b></span>
-                    <span>{t('trend_label')}: <b style='color:#c8d8e8'>{r['trend']}</b></span>
+                <div style='display:flex;gap:16px;font-size:0.82rem;color:#888;flex-wrap:wrap;'>
+                    <span>{t('price_lbl')}: <b style='color:#333'>${r['price']:.2f}</b></span>
+                    <span>{t('rsi_lbl')}: <b style='color:#333'>{r['rsi']:.1f}</b></span>
+                    <span>{t('sl_lbl')}: <b style='color:#dd4444'>${sl}</b></span>
+                    <span>{t('tp_lbl')}: <b style='color:#2e9e5a'>${tp}</b></span>
+                    <span>{t('trend_label')}: <b style='color:#333'>{r['trend']}</b></span>
                 </div>
             </div>""", unsafe_allow_html=True)
 
