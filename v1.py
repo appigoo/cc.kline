@@ -736,7 +736,7 @@ with st.sidebar:
     st.markdown("---")
 
     st.markdown(f"**{t('ticker_label')}**")
-    tickers_input = st.text_input(t("ticker_hint"), value="TSLA,NVDA,AAPL,SPY")
+    tickers_input = st.text_input(t("ticker_hint"), value="TSLA,NVDA,AAPL,SPY,QQQ,AMZN,META,NIO,XPEV")
     tickers = [x.strip().upper() for x in tickers_input.split(",") if x.strip()]
 
     st.markdown(f"**{t('general_tf_label')}**")
